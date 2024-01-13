@@ -11,10 +11,10 @@ import UIKit
 
 class CharacterListTableViewCell: UITableViewCell {
 
-    var result: Result? {
+    var result: CharacterList.ShowCharacterList.ViewModel.DisplayResult? {
         didSet {
             guard let result = result else { return }
-            ImageDownloader.downloaded(from: result.finalPhoto) { image in
+            ImageDownloader.downloaded(from: result.imageUrl) { image in
                 self.characterImage.image = image
             }
             characterName.text = result.name

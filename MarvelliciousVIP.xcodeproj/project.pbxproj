@@ -11,7 +11,6 @@
 		FC878F862B46FD9500FC549B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC878F852B46FD9500FC549B /* SceneDelegate.swift */; };
 		FC878F8D2B46FD9600FC549B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC878F8C2B46FD9600FC549B /* Assets.xcassets */; };
 		FC878F902B46FD9600FC549B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC878F8E2B46FD9600FC549B /* LaunchScreen.storyboard */; };
-		FC878F9B2B46FD9600FC549B /* MarvelliciousVIPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC878F9A2B46FD9600FC549B /* MarvelliciousVIPTests.swift */; };
 		FC878FA52B46FD9700FC549B /* MarvelliciousVIPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC878FA42B46FD9700FC549B /* MarvelliciousVIPUITests.swift */; };
 		FC878FA72B46FD9700FC549B /* MarvelliciousVIPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC878FA62B46FD9700FC549B /* MarvelliciousVIPUITestsLaunchTests.swift */; };
 		FC878FBA2B47327C00FC549B /* CharacterListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC878FB42B47327C00FC549B /* CharacterListPresenter.swift */; };
@@ -32,6 +31,7 @@
 		FC878FDA2B48AE3300FC549B /* CharacterDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC878FD42B48AE3300FC549B /* CharacterDetailsModels.swift */; };
 		FC878FDB2B48AE3300FC549B /* CharacterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC878FD52B48AE3300FC549B /* CharacterDetailsViewController.swift */; };
 		FC878FDC2B48AE3300FC549B /* CharacterDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC878FD62B48AE3300FC549B /* CharacterDetailsInteractor.swift */; };
+		FCB9085D2B51F0390011AD22 /* CharacterListViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB9085C2B51F0390011AD22 /* CharacterListViewControllerTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +59,6 @@
 		FC878F8F2B46FD9600FC549B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC878F912B46FD9600FC549B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC878F962B46FD9600FC549B /* MarvelliciousVIPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelliciousVIPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FC878F9A2B46FD9600FC549B /* MarvelliciousVIPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelliciousVIPTests.swift; sourceTree = "<group>"; };
 		FC878FA02B46FD9700FC549B /* MarvelliciousVIPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelliciousVIPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC878FA42B46FD9700FC549B /* MarvelliciousVIPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelliciousVIPUITests.swift; sourceTree = "<group>"; };
 		FC878FA62B46FD9700FC549B /* MarvelliciousVIPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelliciousVIPUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -81,6 +80,7 @@
 		FC878FD42B48AE3300FC549B /* CharacterDetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsModels.swift; sourceTree = "<group>"; };
 		FC878FD52B48AE3300FC549B /* CharacterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewController.swift; sourceTree = "<group>"; };
 		FC878FD62B48AE3300FC549B /* CharacterDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsInteractor.swift; sourceTree = "<group>"; };
+		FCB9085C2B51F0390011AD22 /* CharacterListViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewControllerTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,7 +147,7 @@
 		FC878F992B46FD9600FC549B /* MarvelliciousVIPTests */ = {
 			isa = PBXGroup;
 			children = (
-				FC878F9A2B46FD9600FC549B /* MarvelliciousVIPTests.swift */,
+				FCB9085A2B51EFAC0011AD22 /* Scenes */,
 			);
 			path = MarvelliciousVIPTests;
 			sourceTree = "<group>";
@@ -213,6 +213,22 @@
 				FC878FC52B4739DD00FC549B /* ListResponse.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		FCB9085A2B51EFAC0011AD22 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				FCB9085B2B51EFBD0011AD22 /* CharacterList */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		FCB9085B2B51EFBD0011AD22 /* CharacterList */ = {
+			isa = PBXGroup;
+			children = (
+				FCB9085C2B51F0390011AD22 /* CharacterListViewControllerTest.swift */,
+			);
+			path = CharacterList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,7 +388,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC878F9B2B46FD9600FC549B /* MarvelliciousVIPTests.swift in Sources */,
+				FCB9085D2B51F0390011AD22 /* CharacterListViewControllerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,14 +23,16 @@ class CharacterListPresenter: CharacterListPresentationLogic {
     func presentShowList(response: CharacterList.ShowCharacterList.Response) {
         var finalResults = response.ListResponse.data.results
         
+        var viewModel = CharacterList.ShowCharacterList.ViewModel(results:  CharacterList.ShowCharacterList.ViewModel.DisplayResultList(list: []))
+        
         for result in finalResults {
-            if let thumbnail = result.thumbnail, let path = thumbnail.path, let thumbnailExtension = thumbnail.thumbnailExtension {
+            if let thumbnail = result.thumbnail, let path = thumbnail.path, let thumbnailExtension = thumbnail.thumbnailExtension, let name = result.name {
                 let photoURLString = "\(path.replacingOccurrences(of: "http", with: "https"))." + "\(thumbnailExtension)"
-                result.finalPhoto = photoURLString
+                let res = CharacterList.ShowCharacterList.ViewModel.DisplayResult(name: name, imageUrl: photoURLString)
+                viewModel.results.list.append(res)
             }
         }
         
-        let viewModel = CharacterList.ShowCharacterList.ViewModel(results: response.ListResponse.data.results)
         viewController?.displayCharacterList(viewModel: viewModel)
     }
 }

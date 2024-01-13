@@ -22,7 +22,7 @@ final class CharacterListViewController: UIViewController, CharacterListDisplayL
     var router: (NSObjectProtocol & CharacterListRoutingLogic & CharacterListDataPassing)?
     private let CELL_IDENTIFIER = "cellIdentifier"
     
-    var characterResults : [Result] = []
+    var vm : CharacterList.ShowCharacterList.ViewModel?
     var numberOfPage : Int = 1
     var stop : Bool = true
     
@@ -81,7 +81,7 @@ final class CharacterListViewController: UIViewController, CharacterListDisplayL
     }
     
     func displayCharacterList(viewModel: CharacterList.ShowCharacterList.ViewModel){
-        characterResults = viewModel.results
+        self.vm = viewModel
         DispatchQueue.main.async {
             self.stop = false
             self.tableView.reloadData()
@@ -91,12 +91,12 @@ final class CharacterListViewController: UIViewController, CharacterListDisplayL
 
 extension CharacterListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return characterResults.count
+        return vm?.results.list.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER, for: indexPath) as! CharacterListTableViewCell
-        cell.result = characterResults[indexPath.row]
+        cell.result = vm?.results.list[indexPath.row]
         cell.selectionStyle = .none
         return cell
     }

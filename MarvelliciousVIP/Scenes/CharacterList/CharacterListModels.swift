@@ -23,8 +23,20 @@ enum CharacterList {
             var ListResponse : ListResponse
         }
          
-        struct ViewModel {
-            var results : [Result]
+        struct ViewModel: Equatable {
+            
+            struct DisplayResultList {
+                var list : [DisplayResult]
+            }
+            struct DisplayResult : Equatable {
+                var name: String
+                var imageUrl : String
+            }
+            var results : DisplayResultList
+            
+            static func == (lhs: CharacterList.ShowCharacterList.ViewModel, rhs: CharacterList.ShowCharacterList.ViewModel) -> Bool {
+                return lhs.results.list == rhs.results.list
+            }
         }
     }
 }

@@ -41,7 +41,7 @@ class DataClass: Codable {
 }
 
 // MARK: - Result
-class Result: Codable {
+class Result: Codable,Equatable {
     let id: Int?
     var name, resultDescription: String?
     let modified: String?
@@ -72,6 +72,10 @@ class Result: Codable {
         self.stories = stories
         self.events = events
         self.urls = urls
+    }
+    
+    static func == (lhs: Result, rhs: Result) -> Bool {
+        return lhs.id == rhs.id && lhs.name == rhs.name
     }
 }
 

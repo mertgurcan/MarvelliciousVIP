@@ -22,8 +22,30 @@ class CharacterDetailsPresenter: CharacterDetailsPresentationLogic {
     
     func presentCharacterDetail(response: CharacterDetails.ShowCharacterDetails.Response) {
         var characterDetail = response.characterDetail
-        characterDetail.resultDescription = ((characterDetail.resultDescription?.isEmpty) != nil) ? "No description" : characterDetail.resultDescription
-        let viewModel = CharacterDetails.ShowCharacterDetails.ViewModel(characterDetail: characterDetail)
+        
+        var name = ""
+        if let n = characterDetail.name {
+            name = n
+        }
+        var detail = ""
+        if let d = characterDetail.resultDescription {
+            detail = d.isEmpty ? "No description" : d
+        }
+        
+        var photoURLString : String = ""
+        if let thumbnail = characterDetail.thumbnail, let path = thumbnail.path, let thumbnailExtension = thumbnail.thumbnailExtension {
+            photoURLString = "\(path.replacingOccurrences(of: "http", with: "https"))." + "\(thumbnailExtension)"
+        }
+        
+        var comics = Comics(available: nil, collectionURI: nil, items: nil, returned: nil)
+        if let c = characterDetail.comics {
+            comics = c
+        }
+        
+        let displayDetails = CharacterDetails.ShowCharacterDetails.ViewModel.DisplayResult(name: name, imageUrl: photoURLString, resultDescription: detail, comics: comics)
+        
+        let viewModel = CharacterDetails.ShowCharacterDetails.ViewModel(displayResult: displayDetails)
         viewController?.displayCharacterDetails(viewModel: viewModel)
     }
 }
+

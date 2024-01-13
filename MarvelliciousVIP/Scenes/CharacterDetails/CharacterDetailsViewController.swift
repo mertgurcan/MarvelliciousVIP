@@ -22,18 +22,18 @@ final class CharacterDetailsViewController: UIViewController, CharacterDetailsDi
     var router: (NSObjectProtocol & CharacterDetailsRoutingLogic & CharacterDetailsDataPassing)?
     private let CELL_IDENTIFIER = "cellIdentifier"
     
-    var details: Result? {
+    var vm: CharacterDetails.ShowCharacterDetails.ViewModel? {
         didSet {
-            guard let details = details else { return }
-            ImageDownloader.downloaded(from: details.finalPhoto) { image in
+            guard let vm = vm else { return }
+            ImageDownloader.downloaded(from: vm.displayResult.imageUrl) { image in
                 self.heroImage.image = image
             }
-            heroNameLabel.text = details.name
-            heroDetailsLabel.text = details.resultDescription
+            heroNameLabel.text = vm.displayResult.name
+            heroDetailsLabel.text = vm.displayResult.resultDescription
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-            self.navigationItem.title = details.name
+            self.navigationItem.title = vm.displayResult.name
         }
     }
     
@@ -118,25 +118,26 @@ final class CharacterDetailsViewController: UIViewController, CharacterDetailsDi
     }
     
     func displayCharacterDetails(viewModel: CharacterDetails.ShowCharacterDetails.ViewModel){
-        self.details = viewModel.characterDetail
+        self.vm = viewModel
     }
 }
 
 extension CharacterDetailsViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (details?.comics?.items?.count)! > 10 {
+        if let vm = vm, (vm.displayResult.comics.items?.count)! > 10 {
             return 10
         } else {
-            return (details?.comics?.items?.count)!
+            return vm?.displayResult.comics.items?.count ?? 0
         }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER, for: indexPath)
-        cell.textLabel?.text = details?.comics?.items?[indexPath.row].name
+        cell.textLabel?.text = vm?.displayResult.comics.items?[indexPath.row].name
         cell.textLabel?.textColor = .black
         cell.backgroundColor = .white
         cell.selectionStyle = .none
         return cell
     }
 }
+

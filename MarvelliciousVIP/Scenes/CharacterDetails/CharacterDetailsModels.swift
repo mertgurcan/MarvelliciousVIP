@@ -22,7 +22,18 @@ enum CharacterDetails {
         }
         
         struct ViewModel {
-            var characterDetail : Result
+            struct DisplayResult : Equatable {
+                var name: String
+                var imageUrl : String
+                var resultDescription : String
+                var comics : Comics
+                
+                static func == (lhs: CharacterDetails.ShowCharacterDetails.ViewModel.DisplayResult, rhs: CharacterDetails.ShowCharacterDetails.ViewModel.DisplayResult) -> Bool {
+                    return lhs.name == rhs.name
+                }
+            }
+            var displayResult : DisplayResult
         }
     }
 }
+
